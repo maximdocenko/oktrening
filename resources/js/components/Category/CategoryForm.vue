@@ -35,6 +35,7 @@ import axios from 'axios';
 export default {
     data() {
         return {
+            categories: [],
             category: {
                 title: '',
                 parent_id: 0,
@@ -52,6 +53,9 @@ export default {
             const response = await axios.get(`/api/categories/${this.$route.params.id}`);
             this.category = response.data;
         }
+        const response = await axios.get(`/api/categories`);
+        this.categories = response.data;
+        console.log(response.data);
     },
     methods: {
         async onFileChange(e) {
