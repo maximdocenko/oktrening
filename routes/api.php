@@ -24,3 +24,7 @@ Route::post('products/filter', [ProductController::class, 'filter']);
 Route::resource('products', ProductController::class);
 Route::resource('categories', CategoryController::class);
 
+Route::get('add-to-cart/{id}', [\App\Http\Controllers\CartController::class, 'addToCart']);
+Route::patch('update-cart', [\App\Http\Controllers\CartController::class, 'update']);
+Route::delete('remove-from-cart', [\App\Http\Controllers\CartController::class, 'remove']);
+
