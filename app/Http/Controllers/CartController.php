@@ -26,14 +26,7 @@ class CartController extends Controller
 
         if(!$cart) {
 
-            $cart = [
-                $id => [
-                    "name" => $product->name,
-                    "quantity" => 1,
-                    "price" => $product->price,
-                    "file" => $product->file
-                ]
-            ];
+            $cart[$id] = $this->fields($product);
 
             session()->put('cart', $cart);
 
@@ -55,12 +48,7 @@ class CartController extends Controller
 
         // Новый продукт
 
-        $cart[$id] = [
-            "name" => $product->name,
-            "quantity" => 1,
-            "price" => $product->price,
-            "file" => $product->file
-        ];
+        $cart[$id] = $this->fields($product);
 
         return response()->json($cart);
     }
@@ -89,5 +77,14 @@ class CartController extends Controller
         }
 
         return response()->json($cart);
+    }
+
+    public function fields($product) {
+        return [
+            "name" => $product->name,
+            "quantity" => 1,
+            "price" => $product->price,
+            "file" => $product->file
+        ];
     }
 }
