@@ -21,6 +21,7 @@ class CategoryController extends Controller
 
     public function index(): JsonResponse
     {
+        //$data = Category::with('parent')->get();
         return response()->json(
             $this->Repository->getAll('App\Models\Category')
         );

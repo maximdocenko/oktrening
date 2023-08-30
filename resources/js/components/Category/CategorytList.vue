@@ -25,7 +25,7 @@
             <tr v-for="category in categories" :key="category.id">
                 <td>{{ category.id }}</td>
                 <td>{{ category.title }}</td>
-                <td>{{ category.parent_id }}</td>
+                <td>{{ category.parent }}</td>
                 <td>
                     <div class="row gap-3">
                         <router-link :to="`/categories/${category.id}`" class="p-2 col border btn btn-primary">View</router-link>
